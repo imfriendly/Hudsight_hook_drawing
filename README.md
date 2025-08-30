@@ -1,5 +1,5 @@
 # Hudsight Drawing
-Reverse engineered Hudsight's hooks and found a way to render anything to the screen
+Using Hudsight's drawing hook to render anything to the screen
 
 https://hudsight.com/
 
@@ -10,4 +10,4 @@ https://hudsight.com/
 
 ## How do I import into my own project?
 - Import hudsight.h and hudsight.cpp into your project and initialize the HudsightDrawing class
-- Drawing methods must be called between the classes frame_start and frame_end functions
+- Drawing methods must be called between the classes HudsightDrawing::frame_start and HudsightDrawing::frame_end functions
