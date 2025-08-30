@@ -1,12 +1,6 @@
 #include "hudsight.h"
 
-#include <Windows.h>
-#include <iostream>
-#include <string>
-#include <vector>
-
 int main() {
-
 	float rotation = 0.0f;
 	while (true) {
 		Sleep(1);
@@ -18,7 +12,6 @@ int main() {
 		rotation += 2.f;
 		if (rotation >= 360.0f)
 			rotation -= 360.0f;
-
 
 		hudsight.get_data()->rotation_degrees = rotation;
 
