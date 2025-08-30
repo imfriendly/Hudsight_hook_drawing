@@ -6,7 +6,7 @@ https://hudsight.com/
 ## How to use
 - Add one of the Crosshair image files to Hudsight that fills your screen.
 - Configure Hudsight to use Hooks for rendering the crosshair and open your game.
-- Compile & Run the project, and you'll see a rotating square.
+- Compile & Run the example project and you'll see a rotating square in your game.
 
 ## How do I import into my own project?
 - Import hudsight.h and hudsight.cpp into your project and initialize the HudsightDrawing class
