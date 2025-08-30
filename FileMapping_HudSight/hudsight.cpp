@@ -1,8 +1,7 @@
 #include "hudsight.h"
 
 
-HudsightDrawing::HudsightDrawing()
-{
+HudsightDrawing::HudsightDrawing() {
   overlay_file_ = nullptr;
   overlay_index_file_ = NULL;
   overlay_buffer_file_ = NULL;
@@ -10,14 +9,12 @@ HudsightDrawing::HudsightDrawing()
   hs_ = get_hudsight(get_index());
 }
 
-HudsightDrawing::~HudsightDrawing()
-{
+HudsightDrawing::~HudsightDrawing() {
   cleanup_mappings();
 }
 
 
-void HudsightDrawing::cleanup_mappings()
-{
+void HudsightDrawing::cleanup_mappings() {
   if (overlay_file_) {
     UnmapViewOfFile(overlay_file_);
     overlay_file_ = nullptr;
@@ -39,8 +36,7 @@ void HudsightDrawing::cleanup_mappings()
   }
 }
 
-int HudsightDrawing::get_index()
-{
+int HudsightDrawing::get_index() {
   if (overlay_file_) {
     return *overlay_file_;
   }
@@ -61,8 +57,7 @@ int HudsightDrawing::get_index()
   return *overlay_file_;
 }
 
-Hudsight* HudsightDrawing::get_hudsight(int index)
-{
+Hudsight* HudsightDrawing::get_hudsight(int index) {
   if (index == -1) {
     return nullptr;
   }
@@ -97,8 +92,7 @@ Hudsight* HudsightDrawing::get_hudsight(int index)
   return hs_;
 }
 
-bool HudsightDrawing::frame_start()
-{
+bool HudsightDrawing::frame_start() {
   int index = get_index();
   if (index == -1) {
     hs_ = nullptr;
@@ -110,13 +104,11 @@ bool HudsightDrawing::frame_start()
   return hs_ != nullptr;
 }
 
-void HudsightDrawing::frame_end()
-{
+void HudsightDrawing::frame_end() {
   hs_->current_id++;
 }
 
-void HudsightDrawing::draw_pixel(int x, int y, Colour colour)
-{
+void HudsightDrawing::draw_pixel(int x, int y, Colour colour) {
   if (hs_ == nullptr)
     return;
 
@@ -130,8 +122,7 @@ void HudsightDrawing::draw_pixel(int x, int y, Colour colour)
   hs_->image_buffer[index + 3] = colour.a;
 }
 
-void HudsightDrawing::draw_outline_rectangle(int x, int y, int width, int height, Colour colour)
-{
+void HudsightDrawing::draw_outline_rectangle(int x, int y, int width, int height, Colour colour) {
   for (int i = 0; i < width; ++i) {
     draw_pixel(x + i, y, colour);
     draw_pixel(x + i, y + height - 1, colour);
@@ -142,8 +133,7 @@ void HudsightDrawing::draw_outline_rectangle(int x, int y, int width, int height
   }
 }
 
-void HudsightDrawing::draw_filled_rectangle(int x, int y, int width, int height, Colour colour)
-{
+void HudsightDrawing::draw_filled_rectangle(int x, int y, int width, int height, Colour colour) {
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
       draw_pixel(x + j, y + i, colour);

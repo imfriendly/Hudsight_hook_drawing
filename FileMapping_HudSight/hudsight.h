@@ -18,9 +18,7 @@ public:
 	}
 };
 
-class Hudsight
-{
-public:
+struct Hudsight {
 	int32_t offset_width; //0x0000
 	int32_t offset_height; //0x0004
 	int32_t image_width; //0x0008
