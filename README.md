@@ -5,7 +5,7 @@ https://hudsight.com/
 
 ## How to use
 - Add one of the Crosshair image files to Hudsight that fills your screen.
-- Configure Hudsight to use Hooks for rendering the crosshair
+- Configure Hudsight to use Hooks for rendering the crosshair and open your game.
 - Compile & Run the project, and you'll see a rotating square.
 
 ## How do I import into my own project?
