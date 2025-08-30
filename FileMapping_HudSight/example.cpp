@@ -2,10 +2,11 @@
 
 int main() {
 	float rotation = 0.0f;
+
+	auto hudsight = HudsightDrawing();
 	while (true) {
 		Sleep(1);
 
-		auto hudsight = HudsightDrawing();
 		if (!hudsight.frame_start())
 			continue;
 
