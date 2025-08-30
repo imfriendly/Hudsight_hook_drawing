@@ -7,12 +7,12 @@ HudsightDrawing::HudsightDrawing()
   overlay_index_file_ = NULL;
   overlay_buffer_file_ = NULL;
   last_index_ = -1;
-	hs_ = get_hudsight(get_index());
+  hs_ = get_hudsight(get_index());
 }
 
 HudsightDrawing::~HudsightDrawing()
 {
-	cleanup_mappings();
+  cleanup_mappings();
 }
 
 
@@ -107,7 +107,7 @@ bool HudsightDrawing::frame_start()
 
   hs_ = get_hudsight(index);
 
-	return hs_ != nullptr;
+  return hs_ != nullptr;
 }
 
 void HudsightDrawing::frame_end()
@@ -117,36 +117,36 @@ void HudsightDrawing::frame_end()
 
 void HudsightDrawing::draw_pixel(int x, int y, Colour colour)
 {
-	if (hs_ == nullptr)
-		return;
+  if (hs_ == nullptr)
+    return;
 
-	if (x < 0 || x >= hs_->image_width || y < 0 || y >= hs_->image_height)
-		return;
+  if (x < 0 || x >= hs_->image_width || y < 0 || y >= hs_->image_height)
+    return;
 
-	size_t index = (static_cast<size_t>(y) * static_cast<size_t>(hs_->image_width) + static_cast<size_t>(x)) * 4;
-	hs_->image_buffer[index] = colour.r;
-	hs_->image_buffer[index + 1] = colour.g;
-	hs_->image_buffer[index + 2] = colour.b;
-	hs_->image_buffer[index + 3] = colour.a;
+  size_t index = (static_cast<size_t>(y) * static_cast<size_t>(hs_->image_width) + static_cast<size_t>(x)) * 4;
+  hs_->image_buffer[index] = colour.b;
+  hs_->image_buffer[index + 1] = colour.g;
+  hs_->image_buffer[index + 2] = colour.r;
+  hs_->image_buffer[index + 3] = colour.a;
 }
 
 void HudsightDrawing::draw_outline_rectangle(int x, int y, int width, int height, Colour colour)
 {
-	for (int i = 0; i < width; ++i) {
-		draw_pixel(x + i, y, colour);
-		draw_pixel(x + i, y + height - 1, colour); 
-	}
-	for (int i = 0; i < height; ++i) {
-		draw_pixel(x, y + i, colour); 
-		draw_pixel(x + width - 1, y + i, colour);
-	}
+  for (int i = 0; i < width; ++i) {
+    draw_pixel(x + i, y, colour);
+    draw_pixel(x + i, y + height - 1, colour);
+  }
+  for (int i = 0; i < height; ++i) {
+    draw_pixel(x, y + i, colour);
+    draw_pixel(x + width - 1, y + i, colour);
+  }
 }
 
 void HudsightDrawing::draw_filled_rectangle(int x, int y, int width, int height, Colour colour)
 {
-	for (int i = 0; i < height; ++i) {
-		for (int j = 0; j < width; ++j) {
-			draw_pixel(x + j, y + i, colour);
-		}
-	}
+  for (int i = 0; i < height; ++i) {
+    for (int j = 0; j < width; ++j) {
+      draw_pixel(x + j, y + i, colour);
+    }
+  }
 }

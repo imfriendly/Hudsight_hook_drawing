@@ -63,6 +63,6 @@ public:
 	void draw_pixel(int x, int y, Colour colour);
 	void draw_outline_rectangle(int x, int y, int width, int height, Colour colour);
 	void draw_filled_rectangle(int x, int y, int width, int height, Colour colour);
-	
+
 	Hudsight* get_data() { return hs_; }
 };
