@@ -8,6 +8,6 @@ https://hudsight.com/
 - Configure Hudsight to use Hooks for rendering the crosshair and open your game.
 - Compile & Run the example project and you'll see a rotating square in your game.
 
-## How do I import into my own project?
+## How do I import this into my own project?
 - Import hudsight.h and hudsight.cpp into your project and initialize the HudsightDrawing class
 - Drawing methods must be called between the classes HudsightDrawing::frame_start and HudsightDrawing::frame_end functions
